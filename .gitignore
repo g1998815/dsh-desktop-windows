@@ -1,0 +1,17 @@
+# 依赖
+node_modules/
+
+# 日志(壳的日志在用户主目录 ~/.dsh-desktop/logs,这里兜底)
+logs/
+*.log
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
+
+# 打包产物(未来 electron-builder 启用时)
+dist/
+release/
+out/
