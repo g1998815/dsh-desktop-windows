@@ -1,0 +1,61 @@
+{
+  "name": "dsh-desktop",
+  "version": "1.0.0",
+  "description": "DSH Web 的 Electron 桌面壳:双击启动、托盘驻留、服务守护",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test \"test/**/*.test.js\"",
+    "build": "electron-builder --win",
+    "build:dir": "electron-builder --win dir",
+    "build:nsis": "electron-builder --win nsis",
+    "build:portable": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "com.dsh.desktop",
+    "productName": "DshDesktop",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png"
+    },
+    "portable": {
+      "artifactName": "DshDesktop-${version}-portable.exe"
+    },
+    "asar": true,
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "DSH 桌面版",
+      "artifactName": "DshDesktop-${version}-setup.exe"
+    }
+  },
+  "devDependencies": {
+    "electron": "^43.4.0",
+    "electron-builder": "^26.15.3"
+  },
+  "author": "dsh-desktop"
+}
